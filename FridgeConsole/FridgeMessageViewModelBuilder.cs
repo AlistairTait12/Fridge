@@ -11,7 +11,7 @@ public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
 
         foreach (var character in characters)
         {
-            if (character == ' ')
+            if (Equals(character, ' '))
             {
                 characterModels.Add(new() { Character = ' ', IsAvailable = true });
                 continue;
@@ -20,7 +20,7 @@ public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
             if (CharacterIsAvailable(character, inventory))
             {
                 characterModels.Add(new() { Character = character, IsAvailable = true });
-                inventory.FirstOrDefault(model => model.Character == character).QuantityAvailable--;
+                inventory.FirstOrDefault(model => Equals(model.Character, character)).QuantityAvailable--;
                 continue;
             }
 
@@ -30,9 +30,7 @@ public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
         return characterModels;
     }
 
-    private bool CharacterIsAvailable(char character, List<CharacterInventoryModel> inventory)
-    {
-        return inventory.Select(model => model.Character).Contains(character) &&
-            inventory.FirstOrDefault(model => model.Character == character).QuantityAvailable > 0;
-    }
+    private bool CharacterIsAvailable(char character, List<CharacterInventoryModel> inventory) =>
+        inventory.Select(model => model.Character).Contains(character)
+        && inventory.FirstOrDefault(model => Equals(model.Character, character)).QuantityAvailable > 0;
 }

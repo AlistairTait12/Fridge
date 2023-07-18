@@ -90,6 +90,28 @@ public class FridgeMessageViewModelBuilderTests
         actual.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
     }
 
+    [Test]
+    public void BuildModel_With_Spaces_In_And_Unavailable_Characters_Returns_List_With_Mixed_Availability()
+    {
+        // Arrange
+        var expected = new List<CharacterModel>
+        {
+            new() { Character = 'c', IsAvailable = true },
+            new() { Character = 'b', IsAvailable = true },
+            new() { Character = 'b', IsAvailable = false },
+            new() { Character = ' ', IsAvailable = true },
+            new() { Character = 'd', IsAvailable = false },
+            new() { Character = ' ', IsAvailable = true },
+            new() { Character = 'a', IsAvailable = true }
+        };
+
+        // Act
+        var actual = _modelBuilder.BuildModel("cbb d a", GetCharacterInventoryModels());
+
+        // Assert
+        actual.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
+    }
+
     private List<CharacterInventoryModel> GetCharacterInventoryModels() =>
         new ()
         {
