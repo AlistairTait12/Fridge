@@ -15,7 +15,8 @@ public class JsonDataAccessTests
     [SetUp]
     public void SetUp()
     {
-        var options = Options.Create(new DataAccessOptions { FilePath = @$"{AppDomain.CurrentDomain.BaseDirectory}" });
+        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\DataAccessTests\inventory.json");
+        var options = Options.Create(new DataAccessOptions { FilePath = path });
         _dataAccess = new(options);
     }
 
@@ -27,7 +28,7 @@ public class JsonDataAccessTests
         {
             new() { Character = 'a', QuantityAvailable = 2 },
             new() { Character = 'b', QuantityAvailable = 5 }
-        };
+        }.AsEnumerable();
 
         // Act
         var actual = _dataAccess.GetData();

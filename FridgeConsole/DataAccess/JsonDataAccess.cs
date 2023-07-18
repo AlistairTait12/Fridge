@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace FridgeConsole.DataAccess;
 
@@ -13,6 +14,8 @@ public class JsonDataAccess<T> : IDataAccess<T>
 
     public IEnumerable<T> GetData()
     {
-        throw new NotImplementedException();
+        var json = File.ReadAllText(_options.Value.FilePath);
+        var models = JsonSerializer.Deserialize<IEnumerable<T>>(json);
+        return models;
     }
 }
