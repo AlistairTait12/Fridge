@@ -15,15 +15,8 @@ public class FridgeMessageModelPrinter : IFridgeMessageModelPrinter
     {
         message.ForEach(model =>
         {
-            if (model.IsAvailable)
-            {
-                _consoleWrapper.PrintCharacter(model.Character, ConsoleColor.Green);
-            };
-
-            if (!model.IsAvailable)
-            {
-                _consoleWrapper.PrintCharacter(model.Character, ConsoleColor.Red);
-            };
+            var color = model.IsAvailable ? ConsoleColor.Green : ConsoleColor.Red;
+            _consoleWrapper.PrintCharacter(model.Character, color);
         });
     }
 }
