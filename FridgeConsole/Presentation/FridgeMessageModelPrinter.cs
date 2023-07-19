@@ -13,6 +13,17 @@ public class FridgeMessageModelPrinter : IFridgeMessageModelPrinter
 
     public void PrintMessage(List<CharacterModel> message)
     {
-        throw new NotImplementedException();
+        message.ForEach(model =>
+        {
+            if (model.IsAvailable)
+            {
+                _consoleWrapper.PrintCharacter(model.Character, ConsoleColor.Green);
+            };
+
+            if (!model.IsAvailable)
+            {
+                _consoleWrapper.PrintCharacter(model.Character, ConsoleColor.Red);
+            };
+        });
     }
 }
