@@ -18,5 +18,6 @@ public class FridgeMessageModelPrinter : IFridgeMessageModelPrinter
             var color = model.IsAvailable ? ConsoleColor.Green : ConsoleColor.Red;
             _consoleWrapper.PrintCharacter(model.Character, color);
         });
+        Console.Write("\r\n\r\n");
     }
 }
