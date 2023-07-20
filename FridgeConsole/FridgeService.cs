@@ -9,20 +9,23 @@ public class FridgeService : IHostedService
 {
     private readonly IFridgeMessageViewModelBuilder _messageViewModelBuilder;
     private readonly IFridgeMessageModelPrinter _messageModelPrinter;
-    private IDataAccess<CharacterInventoryModel> _characterInventoryModel;
+    private readonly IDataAccess<CharacterInventoryModel> _characterInventoryModel;
+    private readonly IConsoleWrapper _consoleWrapper;
 
     public FridgeService(IFridgeMessageViewModelBuilder messageViewModelBuilder,
         IFridgeMessageModelPrinter messageModelPrinter,
-        IDataAccess<CharacterInventoryModel> characterInventoryModel)
+        IDataAccess<CharacterInventoryModel> characterInventoryModel,
+        IConsoleWrapper consoleWrapper)
     {
         _messageViewModelBuilder = messageViewModelBuilder;
         _messageModelPrinter = messageModelPrinter;
         _characterInventoryModel = characterInventoryModel;
+        _consoleWrapper = consoleWrapper;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        var candidate = Console.ReadLine();
+        var candidate = _consoleWrapper.ReadStringFromUser();
         var models = _characterInventoryModel.GetData();
 
         var viewModel = _messageViewModelBuilder.BuildModel(candidate, models.ToList());
