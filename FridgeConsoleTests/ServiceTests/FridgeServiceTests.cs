@@ -1,8 +1,9 @@
 ﻿using FakeItEasy;
-using FridgeConsole;
 using FridgeConsole.DataAccess;
+using FridgeConsole.ModelBuilder;
 using FridgeConsole.Models;
 using FridgeConsole.Presentation;
+using FridgeConsole.Service;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FridgeConsoleTests.ServiceTests;

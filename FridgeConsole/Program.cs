@@ -1,7 +1,8 @@
-﻿using FridgeConsole;
-using FridgeConsole.DataAccess;
+﻿using FridgeConsole.DataAccess;
+using FridgeConsole.ModelBuilder;
 using FridgeConsole.Models;
 using FridgeConsole.Presentation;
+using FridgeConsole.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

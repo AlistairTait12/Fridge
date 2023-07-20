@@ -1,9 +1,10 @@
 ﻿using FridgeConsole.DataAccess;
+using FridgeConsole.ModelBuilder;
 using FridgeConsole.Models;
 using FridgeConsole.Presentation;
 using Microsoft.Extensions.Hosting;
 
-namespace FridgeConsole;
+namespace FridgeConsole.Service;
 
 public class FridgeService : IHostedService
 {

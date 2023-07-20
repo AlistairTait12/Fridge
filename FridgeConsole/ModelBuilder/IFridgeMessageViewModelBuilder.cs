@@ -1,6 +1,6 @@
 ﻿using FridgeConsole.Models;
 
-namespace FridgeConsole;
+namespace FridgeConsole.ModelBuilder;
 
 public interface IFridgeMessageViewModelBuilder
 {

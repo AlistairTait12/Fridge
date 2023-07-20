@@ -1,6 +1,6 @@
 ﻿using FridgeConsole.Models;
 
-namespace FridgeConsole;
+namespace FridgeConsole.ModelBuilder;
 
 public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
 {
@@ -24,7 +24,7 @@ public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
                 continue;
             }
 
-            characterModels.Add(new() { Character = character, IsAvailable =  false });
+            characterModels.Add(new() { Character = character, IsAvailable = false });
         }
 
         return characterModels;
