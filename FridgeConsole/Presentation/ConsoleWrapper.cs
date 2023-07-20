@@ -11,4 +11,9 @@ public class ConsoleWrapper : IConsoleWrapper
         Console.Write(character);
         Console.ForegroundColor = ConsoleColor.White;
     }
+
+    public string ReadStringFromUser()
+    {
+        return Console.ReadLine();
+    }
 }

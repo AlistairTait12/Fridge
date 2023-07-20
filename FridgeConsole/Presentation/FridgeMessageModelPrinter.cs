@@ -11,12 +11,13 @@ public class FridgeMessageModelPrinter : IFridgeMessageModelPrinter
         _consoleWrapper = consoleWrapper;
     }
 
-    public void PrintMessage(List<CharacterModel> message)
+    public void PrintMessage(IEnumerable<CharacterModel> message)
     {
-        message.ForEach(model =>
+        message.ToList().ForEach(model =>
         {
             var color = model.IsAvailable ? ConsoleColor.Green : ConsoleColor.Red;
             _consoleWrapper.PrintCharacter(model.Character, color);
         });
+        Console.Write("\r\n\r\n");
     }
 }

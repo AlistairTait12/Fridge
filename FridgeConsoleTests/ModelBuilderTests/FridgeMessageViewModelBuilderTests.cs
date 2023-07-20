@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using FridgeConsole;
+using FridgeConsole.ModelBuilder;
 using FridgeConsole.Models;
 
-namespace FridgeConsoleTests;
+namespace FridgeConsoleTests.ModelBuilderTests;
 
 [TestFixture]
 public class FridgeMessageViewModelBuilderTests
@@ -113,7 +113,7 @@ public class FridgeMessageViewModelBuilderTests
     }
 
     private List<CharacterInventoryModel> GetCharacterInventoryModels() =>
-        new ()
+        new()
         {
             new() { Character = 'a', QuantityAvailable = 1 },
             new() { Character = 'b', QuantityAvailable = 1 },

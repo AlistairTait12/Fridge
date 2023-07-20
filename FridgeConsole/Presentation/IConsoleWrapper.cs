@@ -3,4 +3,5 @@
 public interface IConsoleWrapper
 {
     void PrintCharacter(char character, ConsoleColor color);
+    string ReadStringFromUser();
 }
