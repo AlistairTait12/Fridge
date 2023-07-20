@@ -32,20 +32,20 @@ public class FridgeServiceTests
     public void StartAsync_Makes_The_Right_Method_Calls()
     {
         // Arrange
-        var data = new List<CharacterInventoryModel>();
-        var model = new List<CharacterModel>();
+        var data = A.Fake<IEnumerable<CharacterInventoryModel>>();
+        var viewModel = A.Fake<IEnumerable<CharacterModel>>();
 
         A.CallTo(() => _consoleWrapper.ReadStringFromUser()).Returns("Jeff");
         A.CallTo(() => _dataAccess.GetData()).Returns(data);
-        A.CallTo(() => _messageViewModelBuilder.BuildModel("Jeff", data)).Returns(model);
+        A.CallTo(() => _messageViewModelBuilder.BuildModel("Jeff", data)).Returns(viewModel);
 
         // Act
         _service.StartAsync(new());
 
         // Assert
+        A.CallTo(() => _consoleWrapper.ReadStringFromUser()).MustHaveHappenedOnceExactly();
         A.CallTo(() => _dataAccess.GetData()).MustHaveHappenedOnceExactly();
-        A.CallTo(() => _messageViewModelBuilder.BuildModel("Jeff", A<List<CharacterInventoryModel>>.Ignored))
-            .MustHaveHappenedOnceExactly();
-        A.CallTo(() => _messageModelPrinter.PrintMessage(A<List<CharacterModel>>.Ignored)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => _messageViewModelBuilder.BuildModel("Jeff", data)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => _messageModelPrinter.PrintMessage(viewModel)).MustHaveHappenedOnceExactly();
     }
 }

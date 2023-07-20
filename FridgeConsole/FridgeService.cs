@@ -28,8 +28,8 @@ public class FridgeService : IHostedService
         var candidate = _consoleWrapper.ReadStringFromUser();
         var models = _characterInventoryModel.GetData();
 
-        var viewModel = _messageViewModelBuilder.BuildModel(candidate, models.ToList());
-        _messageModelPrinter.PrintMessage(viewModel.ToList());
+        var viewModel = _messageViewModelBuilder.BuildModel(candidate, models);
+        _messageModelPrinter.PrintMessage(viewModel);
 
         return Task.CompletedTask;
     }

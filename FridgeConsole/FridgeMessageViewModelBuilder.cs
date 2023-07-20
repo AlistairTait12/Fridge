@@ -4,7 +4,7 @@ namespace FridgeConsole;
 
 public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
 {
-    public IEnumerable<CharacterModel> BuildModel(string messageCandidate, List<CharacterInventoryModel> inventory)
+    public IEnumerable<CharacterModel> BuildModel(string messageCandidate, IEnumerable<CharacterInventoryModel> inventory)
     {
         var characters = messageCandidate.ToCharArray().ToList();
         var characterModels = new List<CharacterModel>();
@@ -30,7 +30,7 @@ public class FridgeMessageViewModelBuilder : IFridgeMessageViewModelBuilder
         return characterModels;
     }
 
-    private bool CharacterIsAvailable(char character, List<CharacterInventoryModel> inventory) =>
+    private bool CharacterIsAvailable(char character, IEnumerable<CharacterInventoryModel> inventory) =>
         inventory.Select(model => model.Character).Contains(character)
         && inventory.FirstOrDefault(model => Equals(model.Character, character)).QuantityAvailable > 0;
 }

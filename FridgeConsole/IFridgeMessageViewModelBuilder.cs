@@ -4,5 +4,5 @@ namespace FridgeConsole;
 
 public interface IFridgeMessageViewModelBuilder
 {
-    IEnumerable<CharacterModel> BuildModel(string messageCandidate, List<CharacterInventoryModel> inventory);
+    IEnumerable<CharacterModel> BuildModel(string messageCandidate, IEnumerable<CharacterInventoryModel> inventory);
 }
